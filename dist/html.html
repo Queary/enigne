@@ -1,0 +1,103 @@
+<!-- <script src="vir.js" type="text/javascript"></script> -->
+<!-- <script src="lir.js" type="text/javascript"></script> -->
+<script  type="module" type="text/javascript">
+  //проверка модулей
+  import './lir.js';
+
+  // alert(sayw); // function...
+  sayw('John','hello'); // Hello, John
+  // console.log(vir);
+  // console.log(lir);
+  var a = 5;
+  var b = 10;
+  console.log(`Fifteen is ${a + b} and not ${2 * a + b}.`);
+  var person = 'Mike';
+var age = 28;
+
+function myTag(strings, personExp, ageExp) {
+  var str0 = strings[0]; // "That "
+  var str1 = strings[1]; // " is a "
+
+  // Технически, в конце итогового выражения
+  // (в нашем примере) есть ещё одна строка,
+  // но она пустая (""), так что пропустим её.
+  // var str2 = strings[2];
+
+  var ageStr;
+  if (ageExp > 99){
+    ageStr = 'centenarian';
+  } else {
+    ageStr = 'youngster';
+  }
+
+  // Мы даже можем вернуть строку, построенную другим шаблонным литералом
+  return `${str0}${personExp}${str1}${ageStr}`;
+}
+
+var output = myTag`That ${ person } is a ${ age }`;
+
+console.log(output);// That Mike is a youngster
+// var obj = { a: 1 };
+// var copy = Object.assign({}, obj);
+// console.log(copy); // { a: 1 }
+var mySet = new Set();
+mySet.add(1); // Set { 1 }
+console.log(mySet.has(1)); // true
+console.log(mySet.size); // 1
+console.log(mySet.delete(1))//0
+console.log(mySet.size); // 0
+class Person {
+	constructor (age) {
+		this.age = age;
+	}
+	sayAge () {
+		return this.age;
+	}
+}
+class Student extends Person {
+	constructor (name, age) {
+		super(age);
+		this.name = name;
+	}
+	sayFull () {
+		return `Hello my name is ${this.name} and I'm ${super.sayAge()} years old`;
+	}
+}
+var robert = new Student("Robert", 19);
+console.log(robert.sayFull()); // Hello my name is Robert and I'm 19 years old
+var func  = (name) =>  console.log("Hello " + name);
+func("ds")
+//let func = new Function([arg1, arg2, ...argN], functionBody);
+
+
+function vir(){
+  var x = 0;
+  if(1==1){var xz = 1;}//выведит
+  return xz;
+}
+function lir(){
+  let x = 0;
+  if(1==1){let xz = 1;}//не выведит
+  return xz;
+}
+var testarr = [];
+testarr[0] = "test";
+console.log(testarr[0])
+if(1==1){delete testarr[0];}
+console.log(testarr[0])
+
+testapp=11;
+console.log(testapp);
+// console.log(delete testapp);
+console.log(testapp);
+
+//console.log(x)
+// console.log(vir())
+// console.log(lir())
+
+</script>
+<style media="screen">
+  /* @media (orientation: portrait) { */
+
+/* } */
+</style>

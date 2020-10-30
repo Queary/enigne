@@ -1,0 +1,14 @@
+//build="use example code";
+//disk="сохранение нереализованных идей в виде кода";
+//src="Исходный код";
+//test/Unit_TEST/="проверка исходного кода";
+
+dist
+*/*
+src
+*core
+*init.js
+*system.js
+**modules
+**generator
+*render
