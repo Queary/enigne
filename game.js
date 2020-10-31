@@ -1,3 +1,7 @@
+//control no use enigne
+//  key('a','ф',()=>{s-=10;x.move('gr1',s,s2);x.render()})
+//  key('d','в',()=>{s+=10;x.move('gr1',s,s2);x.render()})
+
 window.onload = function(){
   var x = new enigne("canvas");
   x.block('gr1',50,50,50,50,'black');
@@ -10,22 +14,8 @@ window.onload = function(){
   x.render();
   var s = x.v.x('gr1');
   var s2= x.v.y('gr1');
+
   // console.log(x.v.x('gr1'));
-  document.addEventListener('keydown', function(event) {
-    //консоль выводит всё о нажатой клавиши
-    //console.log(event)
-    if (event.key == 'd') {
-      s+=10
-      x.move('gr1',s,s2);
-      x.render();
-    }
-    if (event.key == 'a') {
-
-    }
-    if(event.key=='w'){
-
-      }
-  });
   // y.add_block('gr',85,85,15,15,'red');
   // y.render_all(100);
   // x.render(100);
