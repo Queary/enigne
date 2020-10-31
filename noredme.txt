@@ -12,3 +12,5 @@ src
 **modules
 **generator
 *render
+
+первая цель:при использовании render.clear всё мигает а не плавно очишает
