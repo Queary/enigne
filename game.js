@@ -4,11 +4,29 @@
 
 window.onload = function(){
   var x = new enigne("canvas");
-  x.block('gr1','block',50,50,50,50,'black');
   x.block('player','player',150,100,25,25,'purple');
-  x.phys(3,15)
+  x.block('gr1','block',50,50,50,50,'black');
+  x.phys(0.5,15)
+  let px = x.v.x('player');
+  let py = x.v.y('player');
+  //не работает скрипт только на тип player
+  //не работает
+  // document.addEventListener('keydown', function(event) {
+  //   if(event.key == 'a' || event.key == 'ф'){px+=10;x.move('player',50,50)}
+  // });
+  // не работает
+  key('a','ф',(()=>{
+    py = x.v.y('player')
+    px-=10;x.move("player",px,py);
+  }))
+  key('в','d',(()=>{
+    py = x.v.y('player')
+    px+=10;x.move("player",px,py);
+  }))
+  //x.collision(15) - закрытый метод
   console.log(x.v.y('player'))
-  x.block('gr2','block',150,150,50,50,'black');
+  //x.move("player",50,50)
+  x.block('gr2','block',150,150,50,50,'green');
   x.render();
   x.block('gr3','block',250,250,50,50,'#123321');
   x.render();
