@@ -22,7 +22,7 @@ var collision = (arr,idplayer,idblock,gravity,speed)=>{
       //console.log(arr[i]);
       if(arr[player].y > arr[i].y-arr[player].w
       && arr[player].y < arr[i].y+arr[i].h
-      && arr[player].x > arr[i].x-arr[player].w-5
+      && arr[player].x > arr[i].x-arr[player].w
       && arr[player].x < arr[i].x+arr[player].w*2){arr[0].y-=gravity}
       //console.log(speed+":speed collision");
     },speed)

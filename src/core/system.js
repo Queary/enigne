@@ -133,6 +133,7 @@ var enigne = function(canvas){
   //   },speed)
   // }
 
+  
   return this
 }
 //одиночные вне функции

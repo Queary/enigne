@@ -23,6 +23,10 @@ window.onload = function(){
     py = x.v.y('player')
     px+=10;x.move("player",px,py);
   }))
+  //перевести в системное
+  // mouse_d(()=>{
+  //   alert("s")
+  // })
   //x.collision(15) - закрытый метод
   console.log(x.v.y('player'))
   //x.move("player",50,50)

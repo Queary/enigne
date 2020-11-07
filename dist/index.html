@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="gamejs.js"></script>
+  </head>
+  <body>
+    <!-- <canvas  width="1400" height="600" style="border:1px solid silver;"></canvas> -->
+    <var id="viemx">x</var><var id="viemy">x</var><var id="viemnav">x</var><var id="viemmx">x</var><br>
+    <canvas id="canvas" width="1400" height="600" style="border:1px solid silver;"></canvas>
+    <script src="obrgame.js"></script>
+    <body>
+ <p id="ds" contenteditable="true">
+var x = 0;
+ Тортуга<br>
+ Тортуга
+ Тортуга</p>
+ <script>
+ setInterval(function(){
+   var text = document.getElementById("ds")
+   text = text.innerHTML
+   text = text.replace(/var/gi,"<span style='color:red;'>var</span>")
+   document.getElementById("ds").innerHTML = text
+ },1000)
+  // var text = document.getElementById("ds")
+  // text = text.innerHTML
+  // text = text.replace(/var/gi,"<span>var</span>")
+  // document.getElementById("ds").innerHTML = text
+  // console.log(text)
+  // console.log(text.length)
+  // len = text.length
+  // str = 'var x = 0'
+  // var str = str.replace(/var/gi,"varcraft")
+  // console.log(str)
+   </script>
+</body>
+  </body>
+</html>
