@@ -17,27 +17,53 @@
 //f unigne
 
 var enigne = function(canvas){
+  let canv = document.getElementById(canvas);
   let arr_block = [];
   let _gravity = 0;
   let _speed   = 0;
-  window['_arr_block'] = arr_block
+  let h = canv.getBoundingClientRect();
+  //распазнаём координаты мыши)
+  mouse_d(function() {
+    global_mouse_x = event.clientX - h.x;
+    global_mouse_y = event.clientY - h.y;
+    global_mouse_activator=1;
+    //_active_mouse=0;
+    //console.log(global_mouse_x+":"+global_mouse_y);
+    //_active_mouse=0;
+  });
+  function obr_render() {
+    render(canv).clear();
+    let counti = arr_block.length;
+    let ii = 0;
+    while(ii<counti){
+      if(arr_block[ii].type == "player" || arr_block[ii].type=="block"){render(canv).draw(arr_block[ii].x,arr_block[ii].y,arr_block[ii].w,arr_block[ii].h,arr_block[ii].c);
+      }else if(arr_block[ii].type == "button"){
+        render(canv).draw(arr_block[ii].x,arr_block[ii].y,arr_block[ii].w,arr_block[ii].h,arr_block[ii].c);
+        render(canv).draw_button(arr_block[ii].x+arr_block[ii].h,arr_block[ii].y+18,arr_block[ii].color_text,arr_block[ii].text)
+      }
+      ii+=1;}
+  }
+  window['_arr_block'] = arr_block//пытался arr_block сделать глобальной)
   //array render blockw
   //canv = connect id canvas
-  let canv = document.getElementById(canvas);
+
   //pust array
-  this.block = function(name,type,x,y,w,h,color) {
+  this.block = function(name,type,x,y,w,h,color,color_text='',text='',fun=null) {
     let count = arr_block.length;
     console.log(count+":system_count");
+    if(type == 'block' || type=='player'){
     arr_block.push({name:name,type:type,x:x,y:y,w:w,h:h,c:color});
-    if(count>0){collision(arr_block,0,count,_gravity,_speed).collision_obj()}//обр коллизий
+    }
+    else if(type=='button'){
+      arr_block.push({name:name,type:type,x:x,y:y,w:w,h:h,c:color,color_text,text:text,fun});
+    }
+    if(type=="button"){
+      collision(arr_block,0,count,_gravity,_speed).collision_mouse(fun)
+    }else if(count>0){collision(arr_block,0,count,_gravity,_speed).collision_obj()}//обр коллизий
   }
   //render > render no method all
   this.render = ()=>{
-    let count = arr_block.length-1;
-    let i = 0;
-    while(i<count){
-      render(canv).draw(arr_block[i].x,arr_block[i].y,arr_block[i].w,arr_block[i].h,arr_block[i].c);
-      i+=1;}
+    obr_render()
   }
   //system clear
   this.clear = function () {
@@ -87,11 +113,7 @@ var enigne = function(canvas){
       arr_block[i].x = x;
       arr_block[i].y = y;
       console.log(arr_block[i].x+":"+arr_block[i].y);
-      let count1 = arr_block.length;
-      var i1 = 0;
-      while(i1<count1 && move_and_render == 1){
-        render(canv).draw(arr_block[i1].x,arr_block[i1].y,arr_block[i1].w,arr_block[i1].h,arr_block[i1].c);
-        i1+=1;}
+      obr_render()
     }
   }
   this.sysphys = (gravity,speed)=>{
@@ -101,25 +123,17 @@ var enigne = function(canvas){
         let count = arr_block.length
         // console.log(arr_block[0].y)
         arr_block[1].y+=gravity
-        render(canv).clear();
-        let counti = arr_block.length;
-        let ii = 0;
-        while(ii<counti){
-          render(canv).draw(arr_block[ii].x,arr_block[ii].y,arr_block[ii].w,arr_block[ii].h,arr_block[ii].c);
-          ii+=1;}
+        //render(canv).clear();
+        obr_render()
     },speed)
   }
   this.phys =(gravity,speed)=>{
     _gravity = gravity
     _speed   = speed
     setInterval(()=>{
-      render(canv).clear();
+      //render(canv).clear();
       physics().gravity(arr_block,gravity);
-      let counti = arr_block.length;
-      let ii = 0;
-      while(ii<counti){
-        render(canv).draw(arr_block[ii].x,arr_block[ii].y,arr_block[ii].w,arr_block[ii].h,arr_block[ii].c);
-        ii+=1;}
+      obr_render()
       //console.log(arr_block[0].y)
     },speed)
   }
@@ -133,7 +147,7 @@ var enigne = function(canvas){
   //   },speed)
   // }
 
-  
+
   return this
 }
 //одиночные вне функции

@@ -4,9 +4,14 @@
 
 window.onload = function(){
   var x = new enigne("canvas");
+  x.phys(0.5,15)
   x.block('player','player',150,100,25,25,'purple');
   x.block('gr1','block',50,50,50,50,'black');
-  x.phys(0.5,15)
+  x.block('but1','button',1050,25,100,25,'black','green','текст',function (){
+    alert("ds");
+  })
+  //x.block('test_no_block','none',200,200,100,100,'black') - фон
+
   let px = x.v.x('player');
   let py = x.v.y('player');
   //не работает скрипт только на тип player
