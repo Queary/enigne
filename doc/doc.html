@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Документация к enigne</title>
+    <style>
+      *{
+        padding:0px;
+        margin:0px;
+      }
+      body{
+        background:#1a1a1a;
+      }
+      .block{
+        width:80%;
+        height:125px;
+        padding:1%;
+        margin-left:10%;
+        margin-top:5%;
+        background:#645645;
+        color:#f1f1f1;
+        font-family:monospace;
+        font-size:110%;
+      }
+      .block ol{
+        padding-left:2.3%;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height:50px;" class="block">
+      <center><h2>Методы</h2><hr width="150px" style="float:center;"></center>
+    </div>
+    <div class="block">
+      <h2>new enigne("canvas")</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:var x = new enigne("canvas")</p>
+      <p>аргумент(ы):1 arg) пишите название id вашего канваса</p>
+      <p>Описание:создает поле для взаимодействия с движком</p>
+    </div>
+    <div class="block">
+      <h2>phys(gravity,speed)</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.phys(0.5,15)</p>
+      <p>аргумент(ы):1 arg)сила гравитации</p>
+      <p>аргумент(ы):2 arg)скорость обработки гравитации</p>
+      <p>Warning:лучше не меняйте второй аргумент если ещё не хорошо понимаете механику движка</p>
+      <p>Описание:даёт блокам физические или статические свойства гравитации</p>
+    </div>
+    <div style="height:170px;" class="block">
+      <h2>sysphys(gravity,speed)</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.sysphys(0.5,15)</p>
+      <p>Аналог:phys(gravity,speed)</p>
+      <p>разница:именно этот метод вызывается из самого ядра а не из физического движка</p>
+      <p>аргумент(ы):1 arg)сила гравитации</p>
+      <p>аргумент(ы):2 arg)скорость обработки гравитации</p>
+      <p>Warning:лучше не меняйте второй аргумент если ещё не хорошо понимаете механику движка</p>
+      <p>Описание:даёт блокам физические или статические свойства гравитации</p>
+    </div>
+    <div style="height:300px;" class="block">
+      <h2>x.block('id','type',x,y,w,h,'color');</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.block('player','player',150,100,25,25,'purple');</p>
+      <p>аргументы</p>
+      <ol>
+        <li>id:через этот идинтификатор будете к нему подключаться</li>
+        <li>type:player|block|button</li>
+        <li>x:указать координату x</li>
+        <li>y:указать координату y</li>
+        <li>w:указать ширину</li>
+        <li>h:указать высоту</li>
+        <li>'color':=цвет можно задавать:black|#123321|rgb('50','50','50')</li>
+      </ol>
+      <p>Warning:первый блок должен быть указан типом игрока это обязательно а потом уже другие блоки
+      любого типа</p>
+      <p>Warning 2:x.block('but1','button',1050,25,100,25,'black','green','текст',function (){<br>
+        alert("ds");<br>
+      })<br>
+      задаётся с допольнительными аргументами текста и телом функции</p>
+      <p>Описание:создаем окружение в виде блоков</p>
+    </div>
+    <div class="block">
+      <h2>clear()</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.clear()</p>
+      <p>Warning:внимание может не полностью стирать если canvas слишком большой</p>
+      <p>Описание:принудительно стирает все блоки</p>
+    </div>
+    <div class="block">
+      <h2>render()</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.render();</p>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>Описание:принудительно рендерит все блоки которые были обьявлены</p>
+    </div>
+    <div class="block">
+      <h2>v.x('id')</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:let px = x.v.x('player');||console.log(x.v.x('block'));</p>
+      <p>аргументы</p>
+      <ol>
+        <li>id:название блока(вводим id)</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>показывает на какой координате x находится блок</p>
+    </div>
+    <div class="block">
+      <h2>v.y('id')</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:let px = x.v.x('player');||console.log(x.v.x('block'));</p>
+      <p>аргументы</p>
+      <ol>
+        <li>id:название блока(вводим id)</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>показывает на какой координате y находится блок</p>
+    </div>
+    <!-- x.move("player",px,py); -->
+    <div style="height:170px;" class="block">
+      <h2>move(id,x,y)</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:x.move("player",15,15);</p>
+      <p>аргументы</p>
+      <ol>
+        <li>id:название блока(вводим id)</li>
+        <li>x:вводим координату x для перемещения</li>
+        <li>y:вводим координату y для перемещения</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>телепортирут(а может плавно переместить) блок или игрока(смотря что указано в id)<br>
+      по координатам указанным в x,y</p>
+    </div>
+
+    <!-- var test = new VECTOR2(3,5); -->
+    <div style="height:170px;" class="block">
+      <h2> new VECTOR2(x,y)</h2><hr width="150px" style="float:left;">
+      <br>
+      <p>пример:var test = new VECTOR2(3,5);</p>
+      <p>аргументы</p>
+      <ol>
+        <li>x:вводим координату x для его последующего использования</li>
+        <li>y:вводим координату y для его последующего использования</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>удобное хранение x,y координат в виде вектора</p>
+    </div>
+
+    <div style="height:50px;" class="block">
+      <center><h2>События</h2><hr width="150px" style="float:center;"></center>
+    </div>
+
+    <!-- x.block('but1','button',1050,25,100,25,'black','green','текст',function (){
+      alert("ds");
+    }) -->
+
+    <div style="height:280px;" class="block">
+      <h2>block('id','button',x,y,w,h,color,text,fun())</h2><hr width="550px" style="float:left;">
+      <br>
+      <p>x.block('but1','button',1050,25,100,25,'black','green','текст',function (){<br>
+        alert("ds");<br>
+        })<br></p>
+      <p>аргументы</p>
+      <ol>
+        <li>id:создаем идентификатор для будущего подключения</li>
+        <li>button:указываем обязательно тип button</li>
+        <li>x:указываем координату x</li>
+        <li>y:указываем координату y</li>
+        <li>w:ширина кнопки</li>
+        <li>h:высота кнопки</li>
+        <li>color:цвет заднего фона кнопки</li>
+        <li>text:текст внутри кнопки</li>
+        <li>fun():функция которая будет обрабатыватся при нажатии на кнопку</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>если правильно заполнить то при нажатии на кнопку сработает событие описанное в fun()</p>
+    </div>
+
+    <div style="height:50px;" class="block">
+      <center><h2>события и управление</h2><hr width="300px" style="float:center;"></center>
+    </div>
+
+
+    <div style="height:200px;" class="block">
+      <h2>key(key_en,key_ru,fun())</h2><hr width="300px" style="float:left;">
+      <br>
+      <p>пример:key('a','ф',(()=>{<br>
+        py = x.v.y('player')<br>
+        px-=10;x.move("player",px,py);<br>
+      }))<br></p>
+      <p>аргументы</p>
+      <ol>
+        <li>key_en:клавиша в английской раскладке если будет нажата сработает событие</li>
+        <li>key_ru:клавиша в русской    раскладке если будет нажата сработает событие</li>
+        <li>fun():вводим координату y для перемещения</li>
+      </ol>
+      <!-- <p>Warning:внимание может не полностью стирать если canvas слишком большой</p> -->
+      <p>если правильно заполнить то при нажатий клавиш будет срабатывать событие</p>
+    </div>
+  </body>
+</html>

@@ -4,4 +4,4 @@ function add_file (file){
   document.getElementsByTagName('head')[0].appendChild(script);
 }
 
-add_file('src/core/init.js');
+add_file('enigne/core/init.js');
